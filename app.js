@@ -46,7 +46,12 @@ const getMinMaxFromRangesArray = (dates) => {
     };
 };
 
-const findYearsWithHighestPopulation = (dates) => {
+/**
+ * Get distribution data-set of alive people by year.
+ * @param dates [[number, number]]
+ * @returns {{string: number}} key is year and value is people count
+ */
+const getAlivePeopleCountDistributionByYear = (dates) => {
     const datesMinMax = getMinMaxFromRangesArray(dates);
     const pplCount = {};
     for (let i = datesMinMax.min; i <= datesMinMax.max; i++) {
@@ -56,11 +61,25 @@ const findYearsWithHighestPopulation = (dates) => {
             }
         });
     }
-    return Object.keys(pplCount).filter(x => {
-        return pplCount[x] == getMinMaxObjectValues(pplCount).max;
-    });
+    return pplCount;
 };
 
-const people = [[1920, 1940], [1911, 1944], [1920, 1955], [1938, 1940], [1960, 1960]];
-console.log(getMinMaxFromRangesArray(people));
-console.log(findYearsWithHighestPopulation(people));
+/**
+ * Get values of object keys array where they match to a given value.
+ * @param object {{string: string|number}}
+ * @param value string|number
+ * @returns [string]
+ */
+const getKeysWhereValue = (object, value) => Object.keys(object).filter(x => object[x] === value);
+
+/**
+ * Finds years with highest population
+ * @param dates [[number, number]]
+ * @returns [string]
+ */
+const findYearsWithHighestPopulation = (dates) => {
+    const alivePeopleDistributionByYear = getAlivePeopleCountDistributionByYear(dates);
+    return getKeysWhereValue(alivePeopleDistributionByYear, getMinMaxObjectValues(alivePeopleDistributionByYear).max);
+};
+
+console.log(findYearsWithHighestPopulation([[1920, 1940], [1911, 1944], [1920, 1955], [1938, 1940], [1960, 1960]]));
