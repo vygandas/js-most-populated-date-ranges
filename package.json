@@ -1,0 +1,19 @@
+{
+  "name": "js-most-populated-date-ranges",
+  "version": "1.0.0",
+  "description": "We have a list of people with birth year and death year. How can we figure out what year(s) has the highest population? Your function should return the year(s) where the most people were alive.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vygandas/js-most-populated-date-ranges.git"
+  },
+  "author": "Vygandas Pliasas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vygandas/js-most-populated-date-ranges/issues"
+  },
+  "homepage": "https://github.com/vygandas/js-most-populated-date-ranges#readme"
+}
